@@ -1,3 +1,6 @@
+
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/viveksahu26/url_shortner/badge)](https://securityscorecards.dev/viewer/?uri=github.com/viveksahu26/url_shortner)
+
 # twigo CLI
 
 twigo is a cli to send sms/whatapps in golang
