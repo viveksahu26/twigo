@@ -15,6 +15,7 @@ func Send() *cobra.Command {
 		sms(),
 		whatsup(),
 		voice(),
+		email(),
 	)
 	return cmd
 }
@@ -72,6 +73,25 @@ func voice() *cobra.Command {
 		// Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return send.SendVoiceMsg(cmd.Context(), o.To, o.From, o.Body, args)
+		},
+	}
+	o.AddFlags(cmd)
+
+	return cmd
+}
+
+// sub-command of send
+func email() *cobra.Command {
+	o := &options.SendEmailOptions{}
+
+	cmd := &cobra.Command{
+		Use:   "email",
+		Short: "Send email messag",
+		Example: `
+		twigo send email --su "<sender user name>" --from "<sender-email-address>"    --ru "reciever user name" --to "reciever-email-address" --subject "Twilio 101 Workshop"  --ptc "and easy to do anywhere, even with Go"  --hc "<strong>and easy to do anywhere, even with Go</strong>"`,
+		// Args: cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			return send.SendEmailMsg(cmd.Context(), o.SenderUser, o.From, o.RecieverUser, o.To, o.Subject, o.HtmlContent, o.PlainTextContent, args)
 		},
 	}
 	o.AddFlags(cmd)
