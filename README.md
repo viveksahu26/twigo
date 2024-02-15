@@ -9,16 +9,17 @@ twigo is a cli to send sms/whatapps in golang
 Suppose you want to send SMS to your friend:
 
 ```bash
-#   twigo chat --type sms --to "+919721938076" --from "+19519774919" --body "hey buddy !!" 
-  go run ./cmd/twigo/main.go send sms --to "+919721938076" --from "+19519774919" --body "hey buddy..."
+#   twigo chat --type sms --to "+9XXXXXXXXXXX6" --from "+19519774919" --body "hey buddy !!" 
+  go run ./cmd/twigo/main.go send sms --to "+919XXXXXXXX6" --from "+19519774919" --body "hey buddy..."
 
-  twigo send sms --to "+919721938076" --from "+19519774919" --body "hey buddy !!"
+  twigo send sms --to "+919XXXXXXXX6" --from "+19519774919" --body "hey buddy !!"
 
-  twigo send whatsup --to "+919721938076" --from "+19519774919" --body "hey buddy !!"
+# send join <dry-canal> from whatapps and you will get your virtual whatapps number:
+  go run ./cmd/twigo/main.go send whatsup --to "+9197XXXXXXX76" --from "+14155238886" --body "hey buddy..."
 
-  twigo send voice --to "+919721938076" --from "+19519774919" --body "hey buddy !!"
+  twigo send voice --to "+9197XXXXXX76" --from "+19519774919" --body "hey buddy !!"
 
-  twigo send sms --to "+919721938076" --from "+19519774919" --body "hey buddy !!"
+  twigo send sms --to "+9197XXXXXXX76" --from "+19519774919" --body "hey buddy !!"
 
 
 ```

@@ -27,7 +27,7 @@ func sms() *cobra.Command {
 		Use:   "sms",
 		Short: "Send sms directly to mobile phone",
 		Example: `
-		twigo send sms --to "+919721938076" --from "+19519774919" --body "hey buddy !!"
+		twigo send sms --to "+919XXXXXXXX6" --from "+19519774919" --body "hey buddy !!"
 		`,
 		// Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -47,7 +47,7 @@ func whatsup() *cobra.Command {
 		Use:   "whatsup",
 		Short: "Send whatsup messag",
 		Example: `
-		twigo send whatsup --to "+919721938076" --from "+19519774919" --body "hey buddy !!"
+		twigo send whatsup --to "+919XXXXXXXX6" --from "+19519774919" --body "hey buddy !!"
 		`,
 		// Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -67,7 +67,7 @@ func voice() *cobra.Command {
 		Use:   "voice",
 		Short: "Send voice messag",
 		Example: `
-		twigo send voice --to "+919721938076" --from "+19519774919" --body "hey buddy !!"
+		twigo send voice --to "+91XXXXXXXXX6" --from "+19519774919" --body "hey buddy !!"
 		`,
 		// Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {

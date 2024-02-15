@@ -11,11 +11,11 @@ import (
 )
 
 func SendMsg(ctx context.Context, source, destination, body string, args []string) error {
-	accountSid := "ACfed4d0cbfb8da0889f49c406ae40c24a"
-	authToken := "12df78bfb3eb3d7d0500288a16807859"
+	accountSid := ""
+	authToken := ""
 
 	params := &twilioApi.CreateMessageParams{}
-	// params.SetTo("+919721938076")
+	// params.SetTo("+")
 	// params.SetFrom("+19519774919")
 	// params.SetBody("Hello from Go again !!")
 
@@ -39,9 +39,57 @@ func SendMsg(ctx context.Context, source, destination, body string, args []strin
 }
 
 func SendWhatsUP(ctx context.Context, source, destination, body string, args []string) error {
+	accountSid := ""
+	authToken := ""
+
+	params := &twilioApi.CreateMessageParams{}
+	// params.SetTo("+")
+	// params.SetFrom("+19519774919")
+	// params.SetBody("Hello from Go again !!")
+
+	params.SetTo("whatsapp:" + source)
+	params.SetFrom("whatsapp:" + destination)
+	params.SetBody(body)
+
+	client := twilio.NewRestClientWithParams(twilio.ClientParams{
+		Username: accountSid,
+		Password: authToken,
+	})
+
+	resp, err := client.Api.CreateMessage(params)
+	if err != nil {
+		return fmt.Errorf("Error sending SMS message: " + err.Error())
+	} else {
+		response, _ := json.Marshal(*resp)
+		fmt.Println("Response: " + string(response))
+	}
 	return nil
 }
 
 func SendVoiceMsg(ctx context.Context, source, destination, body string, args []string) error {
+	accountSid := ""
+	authToken := ""
+
+	params := &twilioApi.CreateCallParams{}
+	// params.SetTo("+")
+	// params.SetFrom("+19519774919")
+	// params.SetBody("Hello from Go again !!")
+
+	params.SetTo(source)
+	params.SetFrom(destination)
+	params.SetUrl("http://demo.twilio.com/docs/voice.xml")
+
+	client := twilio.NewRestClientWithParams(twilio.ClientParams{
+		Username: accountSid,
+		Password: authToken,
+	})
+
+	resp, err := client.Api.CreateCall(params)
+	if err != nil {
+		return fmt.Errorf("Error sending SMS message: " + err.Error())
+	} else {
+		response, _ := json.Marshal(*resp)
+		fmt.Println("Response: " + string(response))
+	}
 	return nil
 }
